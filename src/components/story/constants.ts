@@ -2,7 +2,7 @@ import axios from "axios";
 
 const options = (id: number) => ({
   method: "GET",
-  url: `https://hacker-news.firebaseio.com/v0/item/${id}.json`,
+  url: `${process.env.REACT_APP_BASE_URL}item/${id}.json`,
   headers: {},
 });
 
