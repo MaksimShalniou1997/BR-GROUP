@@ -2,13 +2,29 @@ import { useEffect, useState } from "react";
 import { getLocaleDate, getStory, IStory, IStoryProps, useStyles } from ".";
 import { Comments } from "../comments";
 
-export const Story = ({ id, isList }: IStoryProps) => {
+export const Story = ({
+  id,
+  isList,
+  updateComments,
+  setUpdateComments,
+}: IStoryProps) => {
   const [story, setStory] = useState<IStory>();
   const classes = useStyles({ isList: !!isList });
 
   useEffect(() => {
     (async () => setStory(await getStory(id)))();
   }, [id]);
+
+  useEffect(() => {
+    if (updateComments) {
+      (async () => {
+        setStory(await getStory(id));
+        if (setUpdateComments) {
+          setUpdateComments(false);
+        }
+      })();
+    }
+  }, [id, setUpdateComments, updateComments]);
 
   return story ? (
     <div className={classes.container}>

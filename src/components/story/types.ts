@@ -13,6 +13,8 @@ export type IStory = {
 export type IStoryProps = {
   id: number;
   isList?: boolean;
+  updateComments?: boolean;
+  setUpdateComments?: (value: boolean) => void;
 };
 
 export type IStoryStyles = {

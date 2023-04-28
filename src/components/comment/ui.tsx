@@ -23,9 +23,13 @@ export const Comment = ({ comment, className }: ICommentProps) => {
       className={`${className} ${classes.container}`}
       onClick={handleClickComment}
     >
-      {comment.kids && !isOpenComments && <ArrowOutwardIcon color="info" />}
-      {comment.kids && isOpenComments && <ArrowDownwardIcon color="info" />}
-      {!comment.kids && <BlockIcon color="info" />}
+      {comment.kids && !isOpenComments && (
+        <ArrowOutwardIcon className={classes.icon} />
+      )}
+      {comment.kids && isOpenComments && (
+        <ArrowDownwardIcon className={classes.icon} />
+      )}
+      {!comment.kids && <BlockIcon className={classes.icon} />}
       <p dangerouslySetInnerHTML={{ __html: comment?.text }} />
       {comment?.kids && (
         <Comments commentsIds={comment?.kids} className={classes.kids} />
