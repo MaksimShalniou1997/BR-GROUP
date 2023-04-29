@@ -7,7 +7,7 @@ import { getStoryIds, useStyles, interval } from ".";
 export const StoriesContainer = () => {
   const classes = useStyles();
 
-  const [storyIds, setStoryIds] = useState([]);
+  const [storyIds, setStoryIds] = useState<number[]>([]);
 
   const updateStoryIds = async () => {
     setStoryIds(await getStoryIds());
